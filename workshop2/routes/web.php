@@ -1,10 +1,13 @@
-<?php
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\StudentController;
-use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => redirect()->route('students.index'));
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
+
+Route::get('/', function () {
+    return redirect()->route('students.index');
+});
+
 Route::resource('students', StudentController::class);
 Route::resource('courses', CourseController::class);
-
-//Route::resource creates: index, create, store, show, edit, update, destroy.
