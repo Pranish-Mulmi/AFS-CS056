@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -22,8 +21,8 @@ class Student extends Model
         ];
     }
 
-    protected function age(): Attribute
+    public function getAgeAttribute(): ?int
     {
-        return Attribute::get(fn () => $this->date_of_birth?->age);
+        return $this->date_of_birth?->age;
     }
 }
