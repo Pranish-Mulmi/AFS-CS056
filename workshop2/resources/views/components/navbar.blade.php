@@ -1,31 +1,62 @@
 <nav class="navbar">
 
-    <a href="{{ url('/') }}" class="brand">
-        Training Institute
-    </a>
+    <div class="container navbar-content">
 
-    <div>
+        <a href="{{ url('/') }}" class="navbar-brand">
+            Training Institute
+        </a>
 
-        @guest
-            <a href="{{ url('/register') }}">Register</a>
+        <div class="navbar-links">
 
-            <a href="{{ route('login') }}">Login</a>
-        @endguest
+            @guest
+
+                <a
+                    href="{{ url('/register') }}"
+                >
+                    Register
+                </a>
+
+                <a
+                    href="{{ route('login') }}"
+                >
+                    Login
+                </a>
+
+            @endguest
 
 
-        @auth
-            <a href="{{ route('courses.index') }}" class="{{ request()->routeIs('courses.*') ? 'active' : '' }}">Courses</a>
+            @auth
 
-            <a href="{{ route('students.index') }}" class="{{ request()->routeIs('students.*') ? 'active' : '' }}"> Students</a>
+                <a
+                    href="{{ route('students.index') }}"
+                    class="{{ request()->routeIs('students.*') ? 'active' : '' }}"
+                >
+                    Students
+                </a>
 
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit">
-                    Logout
-                </button>
-            </form>
+                <a
+                    href="{{ route('courses.index') }}"
+                    class="{{ request()->routeIs('courses.*') ? 'active' : '' }}"
+                >
+                    Courses
+                </a>
 
-        @endauth
+                <form
+                    action="{{ route('logout') }}"
+                    method="POST"
+                    style="display:inline;"
+                >
+                    @csrf
+
+                    <button type="submit">
+                        Logout
+                    </button>
+
+                </form>
+
+            @endauth
+
+        </div>
 
     </div>
 

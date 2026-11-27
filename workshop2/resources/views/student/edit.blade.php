@@ -1,13 +1,22 @@
 <x-layouts.app title="Edit Student">
-<h1>Edit Student</h1>
+    <h1>Edit Student</h1>
 
-<form action="{{ route('students.update', $student) }}" method="POST">
-@csrf
-@method('PUT')
+    <form
+        action="{{ route('students.update', $student) }}"
+        method="POST"
+    >
+        @csrf
+        @method('PUT')
 
-<x-students.form :student="$student" />
+        <x-students.form
+            :student="$student"
+            submit-label="Update Student"
+        />
+    </form>
 
-<button type="submit" class="btn">Update Student</button>
-<a href="{{ route('students.show', $student) }}">Cancel</a>
-</form>
+    <p>
+        <a href="{{ route('students.show', $student) }}">
+            Back to Student Details
+        </a>
+    </p>
 </x-layouts.app>

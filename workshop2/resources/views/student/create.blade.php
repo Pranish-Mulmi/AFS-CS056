@@ -4,9 +4,10 @@
     <form action="{{ route('students.store') }}" method="POST">
         @csrf
 
-        <x-students.form :student="new \App\Models\Student()" />
-
-        <button type="submit" class="btn">Create Student</button>
-        <a href="{{ route('students.index') }}">Cancel</a>
+        <x-students.form submit-label="Create Student" />
     </form>
+
+    <p>
+        <a href="{{ route('students.index') }}">Back to Students</a>
+    </p>
 </x-layouts.app>
